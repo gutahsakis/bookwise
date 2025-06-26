@@ -2,7 +2,7 @@
 
 $pesquisar = $_REQUEST['pesquisar'] ?? '';
 
-$db = new DB($config['database']);
+$db = new Database($config['database']);
 
 $livros = $db->query(
      query: "select * from livros where titulo like :filtro",

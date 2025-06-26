@@ -2,7 +2,7 @@
 //representação de um registro do banco de dados, em forma de classe
 
 
-class DB
+class Database
 {
 
     private $db;
@@ -19,13 +19,18 @@ class DB
 
     public function query($query, $class = null, $params = [])
     {
-
+        
         $prepare = $this->db->prepare($query);
+        
         if ($class) {
             $prepare->setFetchMode(PDO::FETCH_CLASS, $class);
         }
+
         $prepare->execute($params);
+        
 
         return $prepare;
     }
 }
+
+    $database = new Database(config()['database']);
